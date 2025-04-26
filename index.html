@@ -1,94 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>P2P.me | Ambassador Program Guide</title>
-  
-  <!-- TailwindCSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2P.me | Ambassador Program Guide</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5649c0;
+            --secondary: #00cec9;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --gray: #636e72;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: -40px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            padding: 25px;
+            background: var(--primary);
+            color: white;
+        }
+
+        .card-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .team-member:last-child {
+            border-bottom: none;
+        }
+
+        .team-member img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            background: #eee;
+        }
+
+        .team-member-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+
+        .team-member-info p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 40px 0 60px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body class="bg-white text-gray-900 p-6">
-  
-  <div class="max-w-4xl mx-auto">
-    <!-- Header -->
-    <div class="text-center mb-10">
-      <h1 class="text-3xl font-bold">P2P.me | Ambassador Program Guide</h1>
-      <p class="text-gray-600 mt-4">P2P(dot)me operates as a peer-to-peer (P2P) platform, enabling users to trade cryptocurrencies directly without intermediaries.</p>
-      <button class="mt-6 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-semibold transition">
-        Social Links
-      </button>
+<body>
+    <header class="animate__animated animate__fadeIn">
+        <div class="container">
+            <h1>P2P.me Ambassador Program Guide</h1>
+            <p>P2P.me operates as a peer-to-peer (P2P) platform, enabling users to trade cryptocurrencies directly with each other without intermediaries.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card-grid">
+            <!-- Social Links Card -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <h3><i class="fas fa-share-alt"></i> Social Links</h3>
+                </div>
+                <div class="card-body">
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="#" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;">Connect with us on social media to stay updated with the latest news and announcements.</p>
+                </div>
+            </div>
+
+            <!-- Team Card -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header">
+                    <h3><i class="fas fa-users"></i> Meet the Team</h3>
+                </div>
+                <div class="card-body">
+                    <div class="team-member">
+                        <img src="https://ui-avatars.com/api/?name=Mehtab+Ansari&background=6c5ce7&color=fff" alt="Mehtab Ansari">
+                        <div class="team-member-info">
+                            <h4>Mehtab Ansari</h4>
+                            <p>Ambassadors Lead</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://ui-avatars.com/api/?name=Khushi+Khowal&background=6c5ce7&color=fff" alt="Khushi Khowal">
+                        <div class="team-member-info">
+                            <h4>Khushi Khowal</h4>
+                            <p>Ambassadors Lead</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://ui-avatars.com/api/?name=Alok&background=6c5ce7&color=fff" alt="Alok">
+                        <div class="team-member-info">
+                            <h4>Alok</h4>
+                            <p>Ambassadors Lead</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://ui-avatars.com/api/?name=Riya+Sen&background=6c5ce7&color=fff" alt="Riya Sen">
+                        <div class="team-member-info">
+                            <h4>Riya Sen</h4>
+                            <p>Ambassadors Lead</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px; width: 100%;">Visit here!</a>
+                </div>
+            </div>
+
+            <!-- FAQ Card -->
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-header">
+                    <h3><i class="fas fa-question-circle"></i> FAQ's</h3>
+                </div>
+                <div class="card-body">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4 style="margin-bottom: 15px;">Any Questions? We got you.</h4>
+                    <p>Our comprehensive FAQ section covers all aspects of the P2P.me Ambassador Program. Find answers to common questions about participation, rewards, and more.</p>
+                    <a href="#" class="btn" style="margin-top: 20px; width: 100%;">View FAQs</a>
+                </div>
+            </div>
+
+            <!-- Features Card -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <h3><i class="fas fa-star"></i> Features & White Paper</h3>
+                </div>
+                <div class="card-body">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 style="margin-bottom: 15px;">Secure and Transparent Fiat ↔ USDC</h4>
+                    <p>Discover how our platform ensures secure and transparent transactions between fiat currencies and USDC stablecoin.</p>
+                    <a href="#" class="btn" style="margin-top: 20px; width: 100%;">Read White Paper</a>
+                </div>
+            </div>
+
+            <!-- Zealy Card -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header">
+                    <h3><i class="fas fa-tasks"></i> Zealy</h3>
+                </div>
+                <div class="card-body">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">Zealy of P2P.me</h4>
+                    <p style="margin-bottom: 15px;">Zealy is a tasking-questing platform that rewards community members for completing tasks and contributing to the ecosystem.</p>
+                    <a href="#" class="btn" style="width: 100%;">Click to Participate</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Meet the Team -->
-    <div class="mb-10">
-      <h2 class="text-2xl font-semibold mb-6">Meet the Team</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <!-- Team Member -->
-        <div>
-          <img src="assets/your_qr_code_3.jpeg" alt="QR Code" class="w-24 h-24 mx-auto">
-          <p class="mt-2 font-semibold">Mehtab Ansari</p>
-          <p class="text-sm text-gray-500">Ambassadors Lead</p>
+    <footer>
+        <div class="container">
+            <p>© 2023 P2P.me | All rights reserved</p>
         </div>
-        <div>
-          <img src="your_qr_code_2.png" alt="QR Code" class="w-24 h-24 mx-auto">
-          <p class="mt-2 font-semibold">Alok</p>
-          <p class="text-sm text-gray-500">Ambassadors Lead</p>
-        </div>
-        <div>
-          <img src="assets/your_qr_code_1.jpeg" alt="QR Code" class="w-24 h-24 mx-auto">
-          <p class="mt-2 font-semibold">Khushi Khowal</p>
-          <p class="text-sm text-gray-500">Ambassadors Lead</p>
-        </div>
-        <div>
-          <img src="your_qr_code_4.png" alt="QR Code" class="w-24 h-24 mx-auto">
-          <p class="mt-2 font-semibold">Riya Sen</p>
-          <p class="text-sm text-gray-500">Ambassadors Lead</p>
-        </div>
-      </div>
-    </div>
+    </footer>
 
-    <!-- Visit Here -->
-    <div class="mb-10">
-      <h2 class="text-2xl font-semibold mb-6">Visit here!</h2>
-      <div class="space-y-4">
-        <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-          <div>
-            <p class="font-semibold">FAQ’s</p>
-            <p class="text-sm text-gray-500">Any Questions? We got you.</p>
-          </div>
-          <button class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition">Click</button>
-        </div>
-        <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-          <div>
-            <p class="font-semibold">Features & White Paper</p>
-            <p class="text-sm text-gray-500">Secure and Transparent Fiat ⇌ USDC</p>
-          </div>
-          <button class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition">Click</button>
-        </div>
-      </div>
-    </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
 
-    <!-- Zealy Section -->
-    <div class="text-center border-t pt-6">
-      <h2 class="text-2xl font-semibold mb-4">Zealy</h2>
-      <p class="text-gray-500 mb-4">Zealy is a tasking-questing platform</p>
-      <button class="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full mx-auto hover:bg-gray-800 transition">
-        <img src="assets/zealy_logo.png" alt="Zealy" class="h-6">
-        <span>Zealy of P2P.me</span>
-      </button>
-    </div>
-
-  </div>
-
+        // Smooth scrolling for anchor links
+        $(document).ready(function(){
+            $("a").on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
